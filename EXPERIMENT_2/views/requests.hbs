@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Requested Books</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="table-container">
+
+    <h1>📖 Requested Books</h1>
+
+    <table>
+
+        <tr>
+            <th>Student</th>
+            <th>Book</th>
+            <th>Author</th>
+            <th>Date</th>
+        </tr>
+
+        {{#each requests}}
+
+        <tr>
+            <td>{{studentName}}</td>
+            <td>{{bookName}}</td>
+            <td>{{author}}</td>
+            <td>{{requestDate}}</td>
+        </tr>
+
+        {{/each}}
+
+    </table>
+
+    <br>
+
+    <a href="/">← Back</a>
+
+</div>
+
+</body>
+</html>

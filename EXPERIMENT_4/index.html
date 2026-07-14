@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="libraryApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Book Counter</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-controller="libraryCtrl">
+
+    <div class="container">
+        <h1>📚 Books : {{books}}</h1>
+
+        <button ng-click="addBook()">➕ Add Book</button>
+
+        <button ng-click="removeBook()">➖ Remove Book</button>
+
+        <button ng-click="reset()">🔄 Reset</button>
+    </div>
+
+</body>
+</html>

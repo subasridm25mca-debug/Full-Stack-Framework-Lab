@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="codingApp">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding Practice Tracker</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+
+<body ng-controller="CodingController">
+<div class="container">
+<h1>💻 Coding Practice Tracker</h1>
+
+<div class="form">
+<input type="text" placeholder="Language" ng-model="task.language">
+<input type="text" placeholder="Problem Name" ng-model="task.problem">
+<input type="text" placeholder="Difficulty" ng-model="task.difficulty">
+<button ng-click="addTask()">Add</button>
+</div>
+
+<table>
+<tr><th>Language</th><th>Problem</th><th>Difficulty</th><th>Action</th></tr>
+
+<tr ng-repeat="t in tasks">
+<td>{{t.language}}</td>
+<td>{{t.problem}}</td>
+<td>{{t.difficulty}}</td>
+<td><button class="delete" ng-click="deleteTask($index)">Delete</button></td>
+</tr>
+
+<tr ng-if="tasks.length==0">
+<td colspan="4">No coding tasks available.</td>
+</tr>
+</table>
+
+</div>
+</body>
+</html>

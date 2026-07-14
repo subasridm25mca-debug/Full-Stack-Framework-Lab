@@ -1,0 +1,62 @@
+body{
+    font:16px Arial,sans-serif;
+    background:#eef5f3;
+    display:flex;
+    justify-content:center;
+    padding:40px;
+}
+
+.container{
+    width:900px;
+    padding:30px;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 0 10px #ccc;
+}
+
+h1{
+    color:#2f5d50;
+    text-align:center;
+}
+
+.form{
+    display:grid;
+    grid-template-columns:repeat(3,1fr) auto;
+    gap:10px;
+    margin:20px 0;
+}
+
+input,button{
+    padding:10px;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+    color:#fff;
+    background:#5b8c7d;
+}
+
+.delete{
+    background:#e25555;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:12px;
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+th{
+    color:#fff;
+    background:#5b8c7d;
+}
+
+tr:nth-child(even){
+    background:#f8fbfa;
+}
