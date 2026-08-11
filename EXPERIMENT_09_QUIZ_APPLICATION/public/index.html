@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="home-container">
+
+        <div class="quiz-card">
+
+            <h1>🧠 Quiz Hub</h1>
+
+            <p class="subtitle">
+                Choose a topic and test your knowledge
+            </p>
+
+            <h2>Select Your Topic</h2>
+
+            <div id="topics" class="topic-container">
+                <!-- Topics will appear here -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        async function loadTopics() {
+
+            const response = await fetch("/topics");
+            const topics = await response.json();
+
+            const topicContainer = document.getElementById("topics");
+
+            topics.forEach(topic => {
+
+                const button = document.createElement("button");
+
+                button.textContent = topic;
+
+                button.onclick = () => {
+                    window.location.href =
+                        `/quiz.html?topic=${encodeURIComponent(topic)}`;
+                };
+
+                topicContainer.appendChild(button);
+            });
+        }
+
+        loadTopics();
+    </script>
+
+</body>
+</html>

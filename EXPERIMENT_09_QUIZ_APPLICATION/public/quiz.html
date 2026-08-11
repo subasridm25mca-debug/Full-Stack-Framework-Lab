@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quiz</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="quiz-container">
+
+        <div class="quiz-card">
+
+            <!-- Quiz Header -->
+            <div class="quiz-header">
+
+                <h1 id="topic-title">Quiz</h1>
+
+                <p id="progress"></p>
+
+            </div>
+
+
+            <!-- Questions will be displayed here -->
+            <div id="question-container">
+            </div>
+
+
+            <!-- Submit Button -->
+            <button id="submit-btn" onclick="submitQuiz()">
+                Submit Quiz
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // -----------------------------------
+        // Get selected topic from URL
+        // -----------------------------------
+
+        const params = new URLSearchParams(window.location.search);
+
+        const topic = params.get("topic");
+
+
+        // -----------------------------------
+        // Get HTML elements
+        // -----------------------------------
+
+        const questionContainer =
+            document.getElementById("question-container");
+
+        const topicTitle =
+            document.getElementById("topic-title");
+
+        const progress =
+            document.getElementById("progress");
+
+
+        // -----------------------------------
+        // Store questions
+        // -----------------------------------
+
+        let questions = [];
+
+
+        // -----------------------------------
+        // Display selected topic
+        // -----------------------------------
+
+        topicTitle.textContent = topic + " Quiz";
+
+
+        // -----------------------------------
+        // Load questions from backend
+        // -----------------------------------
+
+        async function loadQuestions() {
+
+            try {
+
+                const response = await fetch(
+                    `/questions/${encodeURIComponent(topic)}`
+                );
+
+
+                if (!response.ok) {
+
+                    throw new Error("Unable to load questions");
+
+                }
+
+
+                questions = await response.json();
+
+
+                // Display number of questions
+
+                progress.textContent =
+                    `${questions.length} Questions`;
+
+
+                // Display questions
+
+                displayQuestions();
+
+            }
+
+            catch (error) {
+
+                questionContainer.innerHTML =
+                    "<p>Unable to load questions.</p>";
+
+                console.error(error);
+
+            }
+
+        }
+
+
+        // -----------------------------------
+        // Display questions
+        // -----------------------------------
+
+        function displayQuestions() {
+
+            questionContainer.innerHTML = "";
+
+
+            questions.forEach((q, index) => {
+
+                const questionBox =
+                    document.createElement("div");
+
+
+                questionBox.className =
+                    "question-box";
+
+
+                questionBox.innerHTML = `
+
+                    <h3>
+                        ${index + 1}. ${q.question}
+                    </h3>
+
+
+                    <div class="options">
+
+                        ${q.options.map(option => `
+
+                            <label class="option">
+
+                                <input
+                                    type="radio"
+                                    name="question-${index}"
+                                    value="${escapeHTML(option)}"
+                                >
+
+                                ${escapeHTML(option)}
+
+                            </label>
+
+                        `).join("")}
+
+                    </div>
+
+                `;
+
+
+                questionContainer.appendChild(questionBox);
+
+            });
+
+        }
+
+
+        // -----------------------------------
+        // Fix HTML characters
+        // -----------------------------------
+
+        function escapeHTML(text) {
+
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        // -----------------------------------
+        // Submit Quiz
+        // -----------------------------------
+
+        async function submitQuiz() {
+
+            const answers = [];
+
+
+            // Get selected answer for every question
+
+            questions.forEach((q, index) => {
+
+                const selected =
+                    document.querySelector(
+                        `input[name="question-${index}"]:checked`
+                    );
+
+
+                if (selected) {
+
+                    answers.push(selected.value);
+
+                }
+
+                else {
+
+                    answers.push("");
+
+                }
+
+            });
+
+
+            // -----------------------------------
+            // Send answers to backend
+            // -----------------------------------
+
+            try {
+
+                const response = await fetch("/submit", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        topic: topic,
+
+                        answers: answers
+
+                    })
+
+                });
+
+
+                const result = await response.json();
+
+
+                // -----------------------------------
+                // Store result
+                // -----------------------------------
+
+                sessionStorage.setItem(
+                    "quizResult",
+                    JSON.stringify(result)
+                );
+
+
+                sessionStorage.setItem(
+                    "quizTopic",
+                    topic
+                );
+
+
+                // -----------------------------------
+                // Go to result page
+                // -----------------------------------
+
+                window.location.href =
+                    "result.html";
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                alert("Something went wrong. Please try again.");
+
+            }
+
+        }
+
+
+        // -----------------------------------
+        // Start quiz
+        // -----------------------------------
+
+        loadQuestions();
+
+    </script>
+
+</body>
+
+</html>

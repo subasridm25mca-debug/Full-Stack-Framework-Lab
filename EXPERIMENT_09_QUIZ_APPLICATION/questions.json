@@ -1,0 +1,85 @@
+{
+  "Java": [
+    {
+      "question": "Which keyword is used to inherit a class in Java?",
+      "options": ["extends", "implements", "inherits", "super"],
+      "answer": "extends"
+    },
+    {
+      "question": "Which method is the starting point of a Java program?",
+      "options": ["start()", "main()", "run()", "execute()"],
+      "answer": "main()"
+    },
+    {
+      "question": "Which data type is used to store true or false?",
+      "options": ["int", "boolean", "char", "float"],
+      "answer": "boolean"
+    },
+    {
+      "question": "Which keyword is used to create an object?",
+      "options": ["class", "object", "new", "create"],
+      "answer": "new"
+    },
+    {
+      "question": "Which concept allows the same method to have different forms?",
+      "options": ["Inheritance", "Encapsulation", "Polymorphism", "Abstraction"],
+      "answer": "Polymorphism"
+    }
+  ],
+
+  "Python": [
+    {
+      "question": "Which keyword is used to define a function in Python?",
+      "options": ["function", "def", "define", "fun"],
+      "answer": "def"
+    },
+    {
+      "question": "Which symbol is used for comments in Python?",
+      "options": ["//", "#", "/*", "--"],
+      "answer": "#"
+    },
+    {
+      "question": "Which data type stores multiple values in an ordered collection?",
+      "options": ["List", "Integer", "Boolean", "Float"],
+      "answer": "List"
+    },
+    {
+      "question": "Which function is used to display output in Python?",
+      "options": ["display()", "echo()", "print()", "show()"],
+      "answer": "print()"
+    },
+    {
+      "question": "Which keyword is used to create a loop over a sequence?",
+      "options": ["loop", "repeat", "for", "iterate"],
+      "answer": "for"
+    }
+  ],
+
+  "Web Development": [
+    {
+      "question": "Which HTML tag is used to create a hyperlink?",
+      "options": ["<link>", "<a>", "<href>", "<url>"],
+      "answer": "<a>"
+    },
+    {
+      "question": "Which language is used to style web pages?",
+      "options": ["HTML", "CSS", "Java", "SQL"],
+      "answer": "CSS"
+    },
+    {
+      "question": "Which language is mainly used to add interactivity to web pages?",
+      "options": ["HTML", "CSS", "JavaScript", "SQL"],
+      "answer": "JavaScript"
+    },
+    {
+      "question": "Which HTML tag is used to display an image?",
+      "options": ["<image>", "<img>", "<picture>", "<src>"],
+      "answer": "<img>"
+    },
+    {
+      "question": "Which CSS property is used to change text color?",
+      "options": ["font-color", "text-color", "color", "background-color"],
+      "answer": "color"
+    }
+  ]
+}

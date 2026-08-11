@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quiz Result</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="result-container">
+
+        <div class="result-card">
+
+            <h1>🎉 Quiz Completed!</h1>
+
+            <h2 id="topic"></h2>
+
+            <div class="score-box">
+
+                <p>Your Score</p>
+
+                <h2 id="score"></h2>
+
+                <p id="percentage"></p>
+
+            </div>
+
+            <p id="message"></p>
+
+            <div class="result-buttons">
+
+                <button onclick="tryAgain()">
+                    Try Again
+                </button>
+
+                <button onclick="goHome()">
+                    Home
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Get stored result
+        const result =
+            JSON.parse(sessionStorage.getItem("quizResult"));
+
+        const topic =
+            sessionStorage.getItem("quizTopic");
+
+
+        // Display topic
+        document.getElementById("topic").textContent =
+            topic + " Quiz";
+
+
+        // Display score
+        document.getElementById("score").textContent =
+            `${result.score} / ${result.total}`;
+
+
+        // Calculate percentage
+        const percentage =
+            Math.round((result.score / result.total) * 100);
+
+
+        document.getElementById("percentage").textContent =
+            `${percentage}%`;
+
+
+        // Display message
+        const message =
+            document.getElementById("message");
+
+
+        if (percentage === 100) {
+
+            message.textContent =
+                "Excellent! 🎯 Perfect Score!";
+
+        }
+
+        else if (percentage >= 70) {
+
+            message.textContent =
+                "Great job! Keep it up! 🌟";
+
+        }
+
+        else if (percentage >= 50) {
+
+            message.textContent =
+                "Good attempt! Keep practicing! 💪";
+
+        }
+
+        else {
+
+            message.textContent =
+                "Keep learning and try again! 📚";
+
+        }
+
+
+        // Try Again
+        function tryAgain() {
+
+            window.location.href =
+                `quiz.html?topic=${encodeURIComponent(topic)}`;
+
+        }
+
+
+        // Go Home
+        function goHome() {
+
+            window.location.href =
+                "index.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
