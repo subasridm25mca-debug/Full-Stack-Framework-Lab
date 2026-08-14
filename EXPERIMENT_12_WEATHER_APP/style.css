@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #74b9ff,
+        #a29bfe,
+        #81ecec
+    );
+}
+
+/* Main App */
+.weather-app {
+    width: 360px;
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.25);
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+
+    backdrop-filter: blur(10px);
+}
+
+/* Heading */
+h1 {
+    margin-bottom: 20px;
+
+    color: #ffffff;
+
+    font-size: 28px;
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    gap: 8px;
+
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    flex: 1;
+
+    padding: 11px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+}
+
+.search-box button {
+    padding: 11px 15px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #6c5ce7;
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #574bca;
+}
+
+/* Weather Card */
+.weather-card {
+    padding: 20px;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    border-radius: 18px;
+}
+
+/* City */
+.weather-card h2 {
+    color: #2d3436;
+
+    font-size: 24px;
+
+    margin-bottom: 10px;
+}
+
+/* Temperature */
+.temperature {
+    color: #6c5ce7;
+
+    font-size: 48px;
+
+    font-weight: bold;
+
+    margin: 10px 0;
+}
+
+/* Weather Condition */
+.condition {
+    color: #636e72;
+
+    font-size: 16px;
+
+    text-transform: capitalize;
+
+    margin-bottom: 20px;
+}
+
+/* Details */
+.details {
+    display: flex;
+    justify-content: space-around;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #ddd;
+}
+
+.details div {
+    width: 45%;
+}
+
+.details span {
+    font-size: 25px;
+}
+
+.details p {
+    margin: 5px 0;
+
+    color: #636e72;
+
+    font-size: 13px;
+}
+
+.details strong {
+    color: #2d3436;
+
+    font-size: 16px;
+}
+
+/* Error Message */
+.error {
+    margin-bottom: 15px;
+
+    color: #ffffff;
+
+    font-weight: bold;
+}
