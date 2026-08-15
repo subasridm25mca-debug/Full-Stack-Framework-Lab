@@ -1,0 +1,65 @@
+<div class="page">
+
+  <div class="appointment-card">
+
+    <h2>Book an Appointment</h2>
+
+    <form (ngSubmit)="bookAppointment()">
+
+      <label>Name:</label>
+
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="appointment.name"
+        required
+      >
+
+
+      <label>Age:</label>
+
+      <input
+        type="number"
+        name="age"
+        [(ngModel)]="appointment.age"
+        min="1"
+        required
+      >
+
+
+      <label>Doctor Type:</label>
+
+      <input
+        type="text"
+        name="doctorType"
+        [(ngModel)]="appointment.doctorType"
+        placeholder="e.g. Cardiologist"
+        required
+      >
+
+
+      <label>Date:</label>
+
+      <input
+        type="date"
+        name="date"
+        [(ngModel)]="appointment.date"
+        required
+      >
+
+
+      <button type="submit">
+        Book
+      </button>
+
+    </form>
+
+    @if (message) {
+      <p class="success">
+        {{ message }}
+      </p>
+    }
+
+  </div>
+
+</div>

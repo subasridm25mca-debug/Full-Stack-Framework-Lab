@@ -1,0 +1,212 @@
+<div class="page">
+
+  <div class="appointment-card">
+
+    <!-- Header -->
+    <div class="header">
+
+      <div class="medical-icon">
+        <span>⚕</span>
+      </div>
+
+      <h1>Book an Appointment</h1>
+
+      <p>Your health is our priority</p>
+
+      <div class="heart-line">
+        <span></span>
+        ♥
+        <span></span>
+      </div>
+
+    </div>
+
+
+    <!-- Appointment Form -->
+    <form (ngSubmit)="bookAppointment()">
+
+      <!-- Name -->
+      <div class="input-group">
+
+        <label for="name">
+          <span class="icon">♙</span>
+          Name
+        </label>
+
+        <div class="input-wrapper">
+
+          <input
+            id="name"
+            type="text"
+            name="name"
+            [(ngModel)]="appointment.name"
+            required
+          >
+
+          <span class="input-icon">♙</span>
+
+        </div>
+
+      </div>
+
+
+      <!-- Age -->
+      <div class="input-group">
+
+        <label for="age">
+          <span class="icon">▣</span>
+          Age
+        </label>
+
+        <div class="input-wrapper">
+
+          <input
+            id="age"
+            type="number"
+            name="age"
+            [(ngModel)]="appointment.age"
+            min="1"
+            required
+          >
+
+          <span class="input-icon">♙</span>
+
+        </div>
+
+      </div>
+
+
+      <!-- Doctor Type -->
+      <div class="input-group">
+
+        <label for="doctorType">
+          <span class="icon">♧</span>
+          Doctor Type
+        </label>
+
+        <div class="input-wrapper">
+
+          <select
+            id="doctorType"
+            name="doctorType"
+            [(ngModel)]="appointment.doctorType"
+            required
+          >
+
+            <option value="" disabled>
+              Select Doctor
+            </option>
+
+            <option value="Cardiologist">
+              Cardiologist
+            </option>
+
+            <option value="Dermatologist">
+              Dermatologist
+            </option>
+
+            <option value="Neurologist">
+              Neurologist
+            </option>
+
+            <option value="Orthopedic">
+              Orthopedic
+            </option>
+
+            <option value="Pediatrician">
+              Pediatrician
+            </option>
+
+            <option value="General Physician">
+              General Physician
+            </option>
+
+          </select>
+
+          <span class="select-arrow">⌄</span>
+
+        </div>
+
+      </div>
+
+
+      <!-- Date -->
+      <div class="input-group">
+
+        <label for="date">
+          <span class="icon">▣</span>
+          Date
+        </label>
+
+        <div class="input-wrapper">
+
+          <input
+            id="date"
+            type="date"
+            name="date"
+            [(ngModel)]="appointment.date"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- Book Button -->
+      <button
+        type="submit"
+        class="book-btn"
+      >
+
+        <span>▣</span>
+        Book Appointment
+
+      </button>
+
+    </form>
+
+
+    <!-- Success Message -->
+    @if (message) {
+
+      <div
+        class="message"
+        [class.success]="message.includes('successfully')"
+        [class.error]="!message.includes('successfully')"
+      >
+
+        @if (message.includes('successfully')) {
+
+          <div class="success-icon">
+            ✓
+          </div>
+
+          <div>
+            <strong>Appointment booked successfully!</strong>
+            <small>We look forward to seeing you.</small>
+          </div>
+
+          <div class="heart-icon">
+            ♡
+          </div>
+
+        } @else {
+
+          <div class="error-icon">
+            !
+          </div>
+
+          <div>
+            <strong>{{ message }}</strong>
+          </div>
+
+        }
+
+      </div>
+
+    }
+
+  </div>
+
+</div>
