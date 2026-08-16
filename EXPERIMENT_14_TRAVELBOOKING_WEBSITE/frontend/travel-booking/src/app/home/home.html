@@ -1,0 +1,69 @@
+<div class="booking-section">
+
+  <!-- Trip Type -->
+  <div class="trip-types">
+
+    <label class="trip-option active">
+      <input type="radio" name="tripType" checked>
+      <span>One Way</span>
+    </label>
+
+    <label class="trip-option">
+      <input type="radio" name="tripType">
+      <span>Round Trip</span>
+    </label>
+
+    <label class="trip-option">
+      <input type="radio" name="tripType">
+      <span>Multi City</span>
+    </label>
+
+  </div>
+
+
+  <!-- Search Fields -->
+  <div class="search-box">
+
+    <div class="field">
+      <span class="label">From</span>
+      <input type="text" placeholder="Enter city or airport">
+    </div>
+
+    <div class="swap">⇄</div>
+
+    <div class="field">
+      <span class="label">To</span>
+      <input type="text" placeholder="Enter city or airport">
+    </div>
+
+    <div class="field">
+      <span class="label">Departure</span>
+      <input type="date">
+    </div>
+
+    <div class="field">
+      <span class="label">Return</span>
+      <input type="date">
+    </div>
+
+    <div class="field travellers">
+      <span class="label">Travellers</span>
+
+      <select>
+        <option>1 Traveller</option>
+        <option>2 Travellers</option>
+        <option>3 Travellers</option>
+        <option>4 Travellers</option>
+        <option>5+ Travellers</option>
+      </select>
+    </div>
+
+    <button class="search-btn">SEARCH FLIGHTS</button>
+
+  </div>
+
+</div>
+
+
+<!-- Popular Destinations -->
+<app-destinations></app-destinations>

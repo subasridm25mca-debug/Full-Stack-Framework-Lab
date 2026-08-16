@@ -1,0 +1,175 @@
+/* Booking Page */
+
+.booking-page {
+  min-height: 100vh;
+  padding: 30px 20px 60px;
+  background: #f7f9fc;
+}
+
+/* Page Header */
+
+.page-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.page-header h2 {
+  margin: 0;
+  font-size: 28px;
+  color: #222;
+}
+
+.page-header p {
+  margin-top: 8px;
+  color: #777;
+  font-size: 14px;
+}
+
+
+/* Main Booking Container */
+
+.booking-container {
+  max-width: 850px;
+  margin: auto;
+  background: #ffffff;
+  padding: 28px 30px;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Form Grid */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+
+/* Form Group */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+
+/* Inputs and Selects */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  border: 1px solid #d8dce3;
+  border-radius: 7px;
+  background: #fff;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #087ff5;
+  box-shadow: 0 0 0 2px rgba(8, 127, 245, 0.1);
+}
+
+
+/* Full Width Fields */
+
+.full-width {
+  width: 100%;
+}
+
+
+/* Textarea */
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+
+/* Confirm Button */
+
+.button-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.confirm-btn {
+  border: none;
+  background: #087ff5;
+  color: white;
+  padding: 13px 32px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.confirm-btn:hover {
+  background: #066ed8;
+  transform: translateY(-1px);
+}
+
+
+/* Success Message */
+
+.success-message {
+  margin-top: 25px;
+  padding: 18px 20px;
+  background: #eaf8ef;
+  border: 1px solid #8bd5a5;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.success-message h3 {
+  margin: 0 0 10px;
+  color: #16803a;
+  font-size: 18px;
+}
+
+.success-message p {
+  margin: 6px 0;
+  color: #444;
+  font-size: 14px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+  .booking-page {
+    padding: 20px 12px 40px;
+  }
+
+  .booking-container {
+    padding: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .page-header h2 {
+    font-size: 24px;
+  }
+}

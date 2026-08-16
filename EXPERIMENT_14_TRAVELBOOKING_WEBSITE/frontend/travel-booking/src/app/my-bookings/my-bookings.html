@@ -1,0 +1,103 @@
+<section class="my-bookings-page">
+
+  <div class="page-header">
+    <h2>My Bookings</h2>
+    <p>View your recent travel bookings</p>
+  </div>
+
+  @if (errorMessage) {
+
+    <div class="error-box">
+      <p>{{ errorMessage }}</p>
+    </div>
+
+  }
+
+  @if (!errorMessage && bookings.length === 0) {
+
+    <div class="message-box">
+      <h3>No Bookings Found</h3>
+      <p>You haven't made any bookings yet.</p>
+    </div>
+
+  }
+
+  @if (bookings.length > 0) {
+
+    <div class="booking-list">
+
+      @for (booking of bookings; track booking._id) {
+
+        <div class="booking-card">
+
+          <div class="booking-header">
+
+            <div>
+              <span class="label">Destination</span>
+
+              <h3>
+                ✈️ {{ booking.destination }}
+              </h3>
+            </div>
+
+            <span class="status">
+              ✓ Confirmed
+            </span>
+
+          </div>
+
+          <div class="booking-details">
+
+            <div class="detail">
+              <span>Full Name</span>
+              <strong>{{ booking.fullName }}</strong>
+            </div>
+
+            <div class="detail">
+              <span>Email</span>
+              <strong>{{ booking.email }}</strong>
+            </div>
+
+            <div class="detail">
+              <span>Phone Number</span>
+              <strong>{{ booking.phone }}</strong>
+            </div>
+
+            <div class="detail">
+              <span>Travel Date</span>
+              <strong>{{ booking.travelDate }}</strong>
+            </div>
+
+            <div class="detail">
+              <span>Travellers</span>
+              <strong>{{ booking.travellers }}</strong>
+            </div>
+
+            <div class="detail">
+              <span>Travel Package</span>
+              <strong>{{ booking.package }}</strong>
+            </div>
+
+          </div>
+
+          @if (booking.requests) {
+
+            <div class="requests">
+
+              <span>Special Requests</span>
+
+              <p>{{ booking.requests }}</p>
+
+            </div>
+
+          }
+
+        </div>
+
+      }
+
+    </div>
+
+  }
+
+</section>

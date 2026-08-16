@@ -1,0 +1,126 @@
+.booking-section {
+  margin: 25px auto;
+  max-width: 1250px;
+  background: white;
+  border-radius: 14px;
+  padding: 22px 25px 30px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Trip Type */
+
+.trip-types {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 22px;
+}
+
+.trip-option {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.trip-option input {
+  accent-color: #0878f9;
+}
+
+.trip-option.active {
+  font-weight: 600;
+}
+
+/* Search Box */
+
+.search-box {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  min-height: 90px;
+  overflow: hidden;
+}
+
+.field {
+  flex: 1;
+  padding: 15px 18px;
+  border-right: 1px solid #ddd;
+  min-width: 130px;
+}
+
+.label {
+  display: block;
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background: transparent;
+}
+
+.field input::placeholder {
+  color: #999;
+}
+
+.swap {
+  width: 35px;
+  height: 35px;
+  margin: auto -18px;
+  z-index: 2;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0878f9;
+  font-size: 20px;
+}
+
+/* Search Button */
+
+.search-btn {
+  align-self: center;
+  margin: 0 15px;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 25px;
+  background: #0878f9;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.search-btn:hover {
+  background: #005dcc;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .search-box {
+    flex-wrap: wrap;
+    border: none;
+  }
+
+  .field {
+    min-width: 45%;
+    border: 1px solid #ddd;
+  }
+
+  .swap {
+    display: none;
+  }
+
+  .search-btn {
+    margin: 20px auto 0;
+  }
+}
