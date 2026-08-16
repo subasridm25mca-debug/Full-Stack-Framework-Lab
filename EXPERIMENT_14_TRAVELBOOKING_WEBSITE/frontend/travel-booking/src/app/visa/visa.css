@@ -1,0 +1,155 @@
+.visa-page {
+  min-height: calc(100vh - 100px);
+  background: #f7f9fc;
+  padding: 45px 7%;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  color: #222;
+}
+
+.page-header p {
+  margin: 0;
+  color: #777;
+  font-size: 15px;
+}
+
+.visa-grid {
+  max-width: 1100px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.visa-card {
+  background: white;
+  border-radius: 14px;
+  padding: 22px;
+
+  display: flex;
+  gap: 20px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+  transition: 0.3s;
+}
+
+.visa-card:hover {
+  transform: translateY(-5px);
+}
+
+.visa-icon {
+  width: 65px;
+  height: 65px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: #eef5ff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 32px;
+}
+
+.visa-content {
+  flex: 1;
+}
+
+.visa-content h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: #222;
+}
+
+.visa-content p {
+  margin: 0 0 15px;
+  color: #777;
+  font-size: 13px;
+}
+
+.visa-details {
+  display: flex;
+  gap: 15px;
+
+  padding: 12px 0;
+
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+
+  color: #666;
+  font-size: 11px;
+}
+
+.visa-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 15px;
+}
+
+.visa-bottom small {
+  display: block;
+  color: #888;
+  font-size: 10px;
+}
+
+.visa-bottom strong {
+  display: block;
+  margin-top: 3px;
+
+  color: #087cf5;
+  font-size: 17px;
+}
+
+.apply-btn {
+  text-decoration: none;
+
+  background: #087cf5;
+  color: white;
+
+  padding: 10px 18px;
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.apply-btn:hover {
+  background: #0668d3;
+}
+
+@media (max-width: 750px) {
+
+  .visa-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .visa-page {
+    padding: 30px 5%;
+  }
+
+  .visa-card {
+    flex-direction: column;
+  }
+
+  .visa-bottom {
+    gap: 15px;
+  }
+
+}

@@ -1,0 +1,275 @@
+.cabs-page {
+  min-height: calc(100vh - 100px);
+  background: #f7f9fc;
+  padding: 45px 7%;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  color: #222;
+}
+
+.page-header p {
+  margin: 0;
+  color: #777;
+  font-size: 15px;
+}
+
+
+/* Search */
+
+.search-card {
+  max-width: 1100px;
+  margin: 0 auto 40px;
+
+  padding: 22px;
+
+  background: white;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: end;
+  gap: 15px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.field {
+  flex: 1;
+}
+
+.field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #444;
+}
+
+.field input {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 12px;
+
+  border: 1px solid #d8dce3;
+  border-radius: 7px;
+
+  outline: none;
+}
+
+.field input:focus {
+  border-color: #087cf5;
+}
+
+.search-btn {
+  border: none;
+
+  background: #087cf5;
+  color: white;
+
+  padding: 13px 20px;
+
+  border-radius: 7px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #0668d3;
+}
+
+
+/* Section */
+
+.section-title {
+  max-width: 1100px;
+
+  margin: 0 auto 20px;
+
+  font-size: 22px;
+
+  color: #222;
+}
+
+
+/* Cab Cards */
+
+.cab-grid {
+  max-width: 1100px;
+
+  margin: auto;
+
+  display: grid;
+
+  gap: 18px;
+}
+
+.cab-card {
+  background: white;
+
+  border-radius: 12px;
+
+  padding: 20px;
+
+  display: grid;
+
+  grid-template-columns: 65px 1fr auto;
+
+  align-items: center;
+
+  gap: 18px;
+
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+
+  transition: 0.3s;
+}
+
+.cab-card:hover {
+  transform: translateY(-3px);
+}
+
+
+/* Cab Icon */
+
+.cab-icon {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+
+  background: #fff4df;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 27px;
+}
+
+
+/* Information */
+
+.cab-info h3 {
+  margin: 0 0 6px;
+
+  font-size: 18px;
+}
+
+.cab-info p {
+  margin: 0 0 10px;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+.cab-details {
+  display: flex;
+
+  gap: 18px;
+
+  color: #666;
+
+  font-size: 12px;
+}
+
+
+/* Price */
+
+.cab-price {
+  text-align: right;
+}
+
+.cab-price small {
+  display: block;
+
+  color: #888;
+
+  font-size: 11px;
+}
+
+.cab-price strong {
+  display: block;
+
+  color: #087cf5;
+
+  font-size: 18px;
+
+  margin: 4px 0 10px;
+}
+
+
+/* Button */
+
+.book-btn {
+  display: inline-block;
+
+  text-decoration: none;
+
+  background: #087cf5;
+
+  color: white;
+
+  padding: 9px 18px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+.book-btn:hover {
+  background: #0668d3;
+}
+
+
+/* Responsive */
+
+@media (max-width: 850px) {
+
+  .search-card {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .cab-card {
+    grid-template-columns: 55px 1fr;
+  }
+
+  .cab-price {
+    grid-column: 2;
+
+    text-align: left;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .cabs-page {
+    padding: 30px 5%;
+  }
+
+  .cab-details {
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+}

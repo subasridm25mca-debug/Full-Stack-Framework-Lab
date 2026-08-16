@@ -1,0 +1,958 @@
+<div class="app-container">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+
+    <div class="brand">
+      <h2>ShopEase</h2>
+      <p>Online Store</p>
+    </div>
+
+    <nav>
+
+      <a
+        [class.active]="!showCart && !showCheckout"
+        (click)="showCart = false; showCheckout = false"
+      >
+        🏠 Dashboard
+      </a>
+
+      <a
+        (click)="showCart = false; showCheckout = false"
+      >
+        📦 Products
+      </a>
+
+      <a
+        (click)="showCart = true; showCheckout = false"
+      >
+        🛒 Cart
+
+        <span class="nav-cart-count">
+          {{ getCartCount() }}
+        </span>
+      </a>
+
+      <a
+        (click)="showCheckout = true; showCart = false"
+      >
+        💳 Orders
+      </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a>⚙️ Settings</a>
+      <a>🚪 Logout</a>
+    </div>
+
+  </aside>
+
+
+  <!-- ================= MAIN CONTENT ================= -->
+
+  <main class="main-content">
+
+    <!-- HEADER -->
+
+    <header class="top-header">
+
+      <div>
+        <h1>Product Store</h1>
+        <p>Explore our latest products</p>
+      </div>
+
+      <div
+        class="cart-icon"
+        (click)="showCart = true; showCheckout = false"
+      >
+        🛒
+
+        <span>
+          {{ getCartCount() }}
+        </span>
+
+      </div>
+
+    </header>
+
+
+    <!-- ================================================= -->
+    <!-- PRODUCT LISTING -->
+    <!-- ================================================= -->
+
+    @if (!showCart && !showCheckout && !showConfirmation) {
+
+      <div class="search-section">
+
+        <input
+          type="text"
+          placeholder="Search products..."
+          [value]="searchTerm"
+          (input)="searchTerm = $any($event.target).value"
+        >
+
+        <select
+          [value]="selectedCategory"
+          (change)="selectedCategory = $any($event.target).value"
+        >
+
+          <option value="All Categories">
+            All Categories
+          </option>
+
+          <option value="Chair">
+            Chair
+          </option>
+
+          <option value="Table">
+            Table
+          </option>
+
+          <option value="Sofa">
+            Sofa
+          </option>
+
+          <option value="Desk">
+            Desk
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <section class="products-section">
+
+        <div class="section-title">
+
+          <h2>Featured Products</h2>
+
+          <p>
+            {{ filteredProducts.length }} products available
+          </p>
+
+        </div>
+
+
+        <div class="product-grid">
+
+          @for (
+            product of filteredProducts;
+            track product.id
+          ) {
+
+            <div class="product-card">
+
+              <div class="product-image">
+
+                <img
+                  [src]="product.image"
+                  [alt]="product.name"
+                >
+
+              </div>
+
+
+              <div class="product-info">
+
+                <span class="category">
+                  {{ product.category }}
+                </span>
+
+                <h3>
+                  {{ product.name }}
+                </h3>
+
+
+                <div class="product-bottom">
+
+                  <strong>
+                    {{ formatPrice(product.price) }}
+                  </strong>
+
+                  <button
+                    type="button"
+                    (click)="addToCart(product)"
+                  >
+                    Add to Cart
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+    }
+
+
+    <!-- ================================================= -->
+    <!-- SHOPPING CART -->
+    <!-- ================================================= -->
+
+    @if (showCart && !showCheckout && !showConfirmation) {
+
+      <section class="cart-page">
+
+        <div class="cart-header">
+
+          <div>
+            <h2>Shopping Cart</h2>
+
+            <p>
+              {{ getCartCount() }} item(s) in your cart
+            </p>
+          </div>
+
+
+          <button
+            type="button"
+            class="continue-btn"
+            (click)="showCart = false; showCheckout = false"
+          >
+            ← Continue Shopping
+          </button>
+
+        </div>
+
+
+        <!-- EMPTY CART -->
+
+        @if (cart.length === 0) {
+
+          <div class="empty-cart">
+
+            <div class="empty-icon">
+              🛒
+            </div>
+
+            <h2>Your cart is empty</h2>
+
+            <p>
+              Add some products to continue shopping.
+            </p>
+
+            <button
+              type="button"
+              class="shop-now-btn"
+              (click)="showCart = false; showCheckout = false"
+            >
+              Start Shopping
+            </button>
+
+          </div>
+
+        }
+
+
+        <!-- CART ITEMS -->
+
+        @if (cart.length > 0) {
+
+          <div class="cart-layout">
+
+            <div class="cart-items">
+
+              @for (
+                item of cart;
+                track item.id
+              ) {
+
+                <div class="cart-item">
+
+                  <img
+                    [src]="item.image"
+                    [alt]="item.name"
+                  >
+
+
+                  <div class="cart-product">
+
+                    <span>
+                      {{ item.category }}
+                    </span>
+
+                    <h3>
+                      {{ item.name }}
+                    </h3>
+
+                    <p>
+                      {{ formatPrice(item.price) }}
+                    </p>
+
+                  </div>
+
+
+                  <div class="quantity">
+
+                    <button
+                      type="button"
+                      (click)="decreaseQuantity(item)"
+                    >
+                      −
+                    </button>
+
+                    <span>
+                      {{ item.quantity }}
+                    </span>
+
+                    <button
+                      type="button"
+                      (click)="increaseQuantity(item)"
+                    >
+                      +
+                    </button>
+
+                  </div>
+
+
+                  <div class="item-subtotal">
+
+                    <strong>
+                      {{
+                        formatPrice(
+                          item.price * item.quantity
+                        )
+                      }}
+                    </strong>
+
+                    <button
+                      type="button"
+                      class="remove-btn"
+                      (click)="removeFromCart(item)"
+                    >
+                      Remove
+                    </button>
+
+                  </div>
+
+                </div>
+
+              }
+
+            </div>
+
+
+            <!-- CART SUMMARY -->
+
+            <div class="cart-summary">
+
+              <h2>Cart Total</h2>
+
+
+              <div class="summary-row">
+
+                <span>
+                  Subtotal
+                </span>
+
+                <strong>
+                  {{ formatPrice(getSubtotal()) }}
+                </strong>
+
+              </div>
+
+
+              <div class="summary-row">
+
+                <span>
+                  Shipping
+                </span>
+
+                <strong>
+                  {{ formatPrice(getShipping()) }}
+                </strong>
+
+              </div>
+
+
+              <hr>
+
+
+              <div class="summary-total">
+
+                <span>
+                  Total
+                </span>
+
+                <strong>
+                  {{ formatPrice(getTotal()) }}
+                </strong>
+
+              </div>
+
+
+              <!-- IMPORTANT CHECKOUT BUTTON -->
+
+              <button
+                type="button"
+                class="checkout-btn"
+                (click)="proceedToCheckout()"
+              >
+                Proceed to Checkout
+              </button>
+
+            </div>
+
+          </div>
+
+        }
+
+      </section>
+
+    }
+
+
+    <!-- ================================================= -->
+    <!-- CHECKOUT PAGE -->
+    <!-- ================================================= -->
+
+    @if (showCheckout) {
+
+      <section class="checkout-page">
+
+        <!-- CHECKOUT HEADER -->
+
+        <div class="checkout-header">
+
+          <div>
+
+            <h2>Checkout</h2>
+
+            <p>
+              Complete your order details
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="continue-btn"
+            (click)="backToCart()"
+          >
+            ← Back to Cart
+          </button>
+
+        </div>
+
+
+        <!-- CHECKOUT CONTENT -->
+
+        <div class="checkout-layout">
+
+
+          <!-- ================= LEFT ================= -->
+
+          <div class="checkout-left">
+
+            <!-- CART ITEMS -->
+
+            <div class="checkout-card">
+
+              <h3>
+                Cart Items
+              </h3>
+
+
+              @for (
+                item of cart;
+                track item.id
+              ) {
+
+                <div class="checkout-item">
+
+                  <img
+                    [src]="item.image"
+                    [alt]="item.name"
+                  >
+
+
+                  <div class="checkout-product">
+
+                    <strong>
+                      {{ item.name }}
+                    </strong>
+
+                    <span>
+                      Quantity: {{ item.quantity }}
+                    </span>
+
+                  </div>
+
+
+                  <strong>
+                    {{
+                      formatPrice(
+                        item.price * item.quantity
+                      )
+                    }}
+                  </strong>
+
+                </div>
+
+              }
+
+            </div>
+
+
+            <!-- ORDER SUMMARY -->
+
+            <div class="checkout-card">
+
+              <h3>
+                Order Summary
+              </h3>
+
+
+              <div class="summary-row">
+
+                <span>
+                  Items
+                </span>
+
+                <strong>
+                  {{ getCartCount() }}
+                </strong>
+
+              </div>
+
+
+              <div class="summary-row">
+
+                <span>
+                  Subtotal
+                </span>
+
+                <strong>
+                  {{ formatPrice(getSubtotal()) }}
+                </strong>
+
+              </div>
+
+
+              <div class="summary-row">
+
+                <span>
+                  Delivery
+                </span>
+
+                <strong>
+                  {{ formatPrice(getShipping()) }}
+                </strong>
+
+              </div>
+
+
+              <hr>
+
+
+              <div class="summary-total">
+
+                <span>
+                  TOTAL
+                </span>
+
+                <strong>
+                  {{ formatPrice(getTotal()) }}
+                </strong>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ================= RIGHT ================= -->
+
+          <div class="checkout-right">
+
+            <div class="checkout-card">
+
+              <h3>
+                User Information
+              </h3>
+
+
+              <!-- FULL NAME -->
+
+              <label>
+                Full Name *
+              </label>
+
+              <input
+                type="text"
+                placeholder="Enter your full name"
+                [(ngModel)]="customer.fullName"
+              >
+
+
+              <!-- FIRST + LAST NAME -->
+
+              <div class="two-columns">
+
+                <div>
+
+                  <label>
+                    First Name *
+                  </label>
+
+                  <input
+                    type="text"
+                    placeholder="First name"
+                    [(ngModel)]="customer.firstName"
+                  >
+
+                </div>
+
+
+                <div>
+
+                  <label>
+                    Last Name *
+                  </label>
+
+                  <input
+                    type="text"
+                    placeholder="Last name"
+                    [(ngModel)]="customer.lastName"
+                  >
+
+                </div>
+
+              </div>
+
+
+              <!-- EMAIL -->
+
+              <label>
+                Email *
+              </label>
+
+              <input
+                type="email"
+                placeholder="Enter your email"
+                [(ngModel)]="customer.email"
+              >
+
+
+              <!-- PHONE -->
+
+              <label>
+                Phone *
+              </label>
+
+              <input
+                type="tel"
+                placeholder="Enter your phone number"
+                [(ngModel)]="customer.phone"
+              >
+
+
+              <!-- ADDRESS -->
+
+              <label>
+                Address *
+              </label>
+
+              <textarea
+                placeholder="Enter your delivery address"
+                [(ngModel)]="customer.address"
+              ></textarea>
+
+
+              <!-- PAYMENT METHOD -->
+
+              <label>
+                Select Payment Method *
+              </label>
+
+
+              <div class="payment-options">
+
+
+                <!-- CASH ON DELIVERY -->
+
+                <label class="payment-option">
+
+                  <input
+                    type="radio"
+                    name="payment"
+                    value="Cash on Delivery"
+                    [(ngModel)]="paymentMethod"
+                  >
+
+                  <div>
+
+                    <strong>
+                      Cash on Delivery
+                    </strong>
+
+                    <span>
+                      Pay when your order is delivered
+                    </span>
+
+                  </div>
+
+                </label>
+
+
+                <!-- CARD -->
+
+                <label class="payment-option">
+
+                  <input
+                    type="radio"
+                    name="payment"
+                    value="Credit/Debit Card"
+                    [(ngModel)]="paymentMethod"
+                  >
+
+                  <div>
+
+                    <strong>
+                      Credit/Debit Card
+                    </strong>
+
+                    <span>
+                      Pay securely using your card
+                    </span>
+
+                  </div>
+
+                </label>
+
+              </div>
+
+
+              <!-- PLACE ORDER -->
+
+              <button
+                type="button"
+                class="place-order-btn"
+                (click)="placeOrder()"
+              >
+                Place Order
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    }
+    <!-- ========================================= -->
+<!-- ORDER CONFIRMATION -->
+<!-- ========================================= -->
+
+@if (showConfirmation && lastOrder) {
+
+  <section class="confirmation-page">
+
+    <div class="confirmation-card">
+
+      <!-- SUCCESS ICON -->
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+
+      <!-- TITLE -->
+
+      <h1>
+        Order Placed Successfully!
+      </h1>
+
+      <p class="confirmation-message">
+        Thank you for your purchase.
+        Your order has been successfully placed.
+      </p>
+
+
+      <!-- ORDER ID -->
+
+      <div class="order-id">
+
+        <span>
+          Order ID
+        </span>
+
+        <strong>
+          {{ lastOrder._id }}
+        </strong>
+
+      </div>
+
+
+      <!-- ORDER ITEMS -->
+
+      <div class="confirmation-section">
+
+        <h3>
+          Order Summary
+        </h3>
+
+
+        @for (
+          item of lastOrder.items;
+          track item.productId
+        ) {
+
+          <div class="confirmation-item">
+
+            <img
+              [src]="item.image"
+              [alt]="item.name"
+            >
+
+
+            <div class="confirmation-product">
+
+              <strong>
+                {{ item.name }}
+              </strong>
+
+              <span>
+                Quantity: {{ item.quantity }}
+              </span>
+
+            </div>
+
+
+            <strong>
+              {{
+                formatPrice(
+                  item.price * item.quantity
+                )
+              }}
+            </strong>
+
+          </div>
+
+        }
+
+      </div>
+
+
+      <!-- PRICE SUMMARY -->
+
+      <div class="confirmation-summary">
+
+        <div class="confirmation-row">
+
+          <span>
+            Subtotal
+          </span>
+
+          <strong>
+            {{ formatPrice(lastOrder.subtotal) }}
+          </strong>
+
+        </div>
+
+
+        <div class="confirmation-row">
+
+          <span>
+            Delivery
+          </span>
+
+          <strong>
+            {{ formatPrice(lastOrder.shipping) }}
+          </strong>
+
+        </div>
+
+
+        <hr>
+
+
+        <div class="confirmation-total">
+
+          <span>
+            TOTAL
+          </span>
+
+          <strong>
+            {{ formatPrice(lastOrder.total) }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- PAYMENT -->
+
+      <div class="payment-confirmation">
+
+        <span>
+          Payment Method
+        </span>
+
+        <strong>
+          {{ lastOrder.paymentMethod }}
+        </strong>
+
+      </div>
+
+
+      <!-- CUSTOMER -->
+
+      <div class="delivery-confirmation">
+
+        <h3>
+          Delivery Information
+        </h3>
+
+        <p>
+          <strong>
+            {{ lastOrder.customer.fullName }}
+          </strong>
+        </p>
+
+        <p>
+          {{ lastOrder.customer.address }}
+        </p>
+
+        <p>
+          {{ lastOrder.customer.phone }}
+        </p>
+
+        <p>
+          {{ lastOrder.customer.email }}
+        </p>
+
+      </div>
+
+
+      <!-- CONTINUE SHOPPING -->
+
+      <button
+        type="button"
+        class="continue-shopping-btn"
+        (click)="continueShopping()"
+      >
+        Continue Shopping
+      </button>
+
+    </div>
+
+  </section>
+
+}
+  </main>
+
+</div>

@@ -1,0 +1,164 @@
+.tours-page {
+  min-height: calc(100vh - 100px);
+  background: #f7f9fc;
+  padding: 45px 7%;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  color: #222;
+}
+
+.page-header p {
+  margin: 0;
+  color: #777;
+  font-size: 15px;
+}
+
+.tour-grid {
+  max-width: 1100px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.tour-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+  transition: 0.3s;
+}
+
+.tour-card:hover {
+  transform: translateY(-5px);
+}
+
+.tour-image {
+  height: 200px;
+  position: relative;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.tour-goa {
+  background-image: url("https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1000&q=80");
+}
+
+.tour-manali {
+  background-image: url("https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1000&q=80");
+}
+
+.tour-dubai {
+  background-image: url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=80");
+}
+
+.tour-paris {
+  background-image: url("https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1000&q=80");
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+
+  background: white;
+  color: #087cf5;
+
+  padding: 6px 12px;
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tour-content {
+  padding: 20px;
+}
+
+.tour-content h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: #222;
+}
+
+.tour-content > p {
+  color: #777;
+  font-size: 14px;
+  margin: 0 0 15px;
+}
+
+.tour-details {
+  display: flex;
+  gap: 20px;
+
+  padding: 12px 0;
+
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+
+  color: #666;
+  font-size: 12px;
+}
+
+.tour-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 16px;
+}
+
+.tour-bottom small {
+  display: block;
+  color: #888;
+  font-size: 11px;
+}
+
+.tour-bottom strong {
+  display: block;
+  margin-top: 4px;
+
+  color: #087cf5;
+  font-size: 18px;
+}
+
+.book-btn {
+  text-decoration: none;
+
+  background: #087cf5;
+  color: white;
+
+  padding: 11px 20px;
+  border-radius: 22px;
+
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.book-btn:hover {
+  background: #0668d3;
+}
+
+@media (max-width: 700px) {
+
+  .tour-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tours-page {
+    padding: 30px 5%;
+  }
+
+}

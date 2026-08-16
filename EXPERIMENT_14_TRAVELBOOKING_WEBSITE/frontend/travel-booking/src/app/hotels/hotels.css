@@ -1,0 +1,154 @@
+.hotels-page {
+  min-height: calc(100vh - 100px);
+  background: #f7f9fc;
+  padding: 45px 7%;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  color: #222;
+}
+
+.page-header p {
+  margin: 0;
+  color: #777;
+  font-size: 15px;
+}
+
+.hotel-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.hotel-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.hotel-card:hover {
+  transform: translateY(-5px);
+}
+
+.hotel-image {
+  height: 190px;
+  position: relative;
+}
+
+.hotel-1 {
+  background-image: url("https://r1imghtlak.mmtcdn.com/6252c67076a411e8a83d0261db56d4cc.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hotel-2 {
+  background-image: url("https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.hotel-3 {
+  background-image: url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.hotel-4 {
+  background-image: url("https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=900&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: white;
+  color: #087cf5;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.hotel-content {
+  padding: 20px;
+}
+
+.hotel-content h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.hotel-content p {
+  color: #777;
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+.rating {
+  color: #f5a623;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.rating span {
+  color: #555;
+  margin-left: 5px;
+}
+
+.hotel-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.hotel-bottom small {
+  display: block;
+  color: #888;
+  font-size: 11px;
+}
+
+.hotel-bottom strong {
+  display: block;
+  margin-top: 4px;
+  color: #087cf5;
+  font-size: 16px;
+}
+
+.book-btn {
+  text-decoration: none;
+  background: #087cf5;
+  color: white;
+  padding: 11px 20px;
+  border-radius: 22px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.book-btn:hover {
+  background: #0668d3;
+}
+
+@media (max-width: 700px) {
+  .hotel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hotels-page {
+    padding: 30px 5%;
+  }
+}

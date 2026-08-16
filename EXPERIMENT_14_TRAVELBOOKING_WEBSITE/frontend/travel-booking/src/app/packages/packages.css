@@ -1,0 +1,153 @@
+.packages-page {
+  min-height: calc(100vh - 100px);
+  background: #f7f9fc;
+  padding: 45px 7%;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  color: #222;
+}
+
+.page-header p {
+  margin: 0;
+  color: #777;
+  font-size: 15px;
+}
+
+.package-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.package-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.package-card:hover {
+  transform: translateY(-5px);
+}
+
+.package-image {
+  height: 200px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.package-goa {
+  background-image: url("https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1000&q=80");
+}
+
+.package-manali {
+  background-image: url("https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1000&q=80");
+}
+
+.package-dubai {
+  background-image: url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=80");
+}
+
+.package-maldives {
+  background-image: url("https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1000&q=80");
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: white;
+  color: #087cf5;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.package-content {
+  padding: 20px;
+}
+
+.package-content h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: #222;
+}
+
+.package-content > p {
+  color: #777;
+  font-size: 14px;
+  margin: 0 0 15px;
+}
+
+.package-info {
+  display: flex;
+  gap: 20px;
+  padding: 12px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  color: #666;
+  font-size: 12px;
+}
+
+.package-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+}
+
+.package-bottom small {
+  display: block;
+  color: #888;
+  font-size: 11px;
+}
+
+.package-bottom strong {
+  display: block;
+  margin-top: 4px;
+  color: #087cf5;
+  font-size: 18px;
+}
+
+.book-btn {
+  text-decoration: none;
+  background: #087cf5;
+  color: white;
+  padding: 11px 20px;
+  border-radius: 22px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.book-btn:hover {
+  background: #0668d3;
+}
+
+@media (max-width: 700px) {
+
+  .package-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .packages-page {
+    padding: 30px 5%;
+  }
+
+  .package-info {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

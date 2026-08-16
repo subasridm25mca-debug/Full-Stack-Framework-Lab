@@ -1,0 +1,152 @@
+.villas-page {
+  min-height: calc(100vh - 100px);
+  background: #f7f9fc;
+  padding: 45px 7%;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+  color: #222;
+}
+
+.page-header p {
+  margin: 0;
+  color: #777;
+  font-size: 15px;
+}
+
+.villa-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.villa-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.villa-card:hover {
+  transform: translateY(-5px);
+}
+
+.villa-image {
+  height: 190px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Destination Images */
+
+.villa-goa {
+  background-image: url("https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=1000&q=80");
+}
+
+.villa-manali {
+  background-image: url("https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=80");
+}
+
+.villa-kerala {
+  background-image: url("https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1000&q=80");
+}
+
+.villa-jaipur {
+  background-image: url("https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1000&q=80");
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: white;
+  color: #087cf5;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.villa-content {
+  padding: 20px;
+}
+
+.villa-content h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.villa-content p {
+  color: #777;
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+.rating {
+  color: #f5a623;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.rating span {
+  color: #555;
+  margin-left: 5px;
+}
+
+.villa-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.villa-bottom small {
+  display: block;
+  color: #888;
+  font-size: 11px;
+}
+
+.villa-bottom strong {
+  display: block;
+  margin-top: 4px;
+  color: #087cf5;
+  font-size: 16px;
+}
+
+.book-btn {
+  text-decoration: none;
+  background: #087cf5;
+  color: white;
+  padding: 11px 20px;
+  border-radius: 22px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.book-btn:hover {
+  background: #0668d3;
+}
+
+@media (max-width: 700px) {
+
+  .villa-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .villas-page {
+    padding: 30px 5%;
+  }
+
+}
